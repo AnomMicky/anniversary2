@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- START SEQUENCE ---
     startBtn.addEventListener('click', () => {
         // 1. Play Music (From 22 seconds)
-        music.currentTime = 22; // START AT 22 SECONDS
+        music.currentTime = 30; // START AT 22 SECONDS
         music.play().catch(e => console.log("Audio error:", e));
         
         // 2. Hide Overlay
