@@ -30,6 +30,7 @@ const messages = [
     "Im still not that great at it but I'm trying...",
     "And with you, I want to share everything no matter what 🥺",
     "I understood that sharing stuff is what makes us stronger 🥹💛",
+    "I'll always share stuff with you even if that means I'll get scolded 😝😘",
     "I'm still learning how to be more empathic...",
     "I'm learning from the person who is the best at it 🤭",
     "You told me that I'm kind, but I learned kindness from you.",
