@@ -1,0 +1,256 @@
+/* --- CORE VARIABLES --- */
+:root {
+    --primary: #ff6b6b;
+    --box-color: #ff3366;
+    --ribbon-color: #ffd700;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+    font-family: 'Helvetica Neue', sans-serif;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* --- INTRO SCREEN (The Dark Purple Layer) --- */
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a0520;
+    z-index: 100;
+    transition: opacity 2s ease-out; /* Slow fade out */
+}
+
+/* --- GIFT BOX ANIMATIONS & STYLING --- */
+#gift-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    z-index: 200;
+    margin-bottom: 50px; /* Space for text below */
+    /* The "Excited" Shake Animation */
+    animation: excited-shake 0.5s infinite;
+}
+
+#gift-container:hover {
+    animation: excited-shake 0.3s infinite; /* Shakes faster on hover */
+}
+
+@keyframes excited-shake {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-2px, 2px) rotate(-2deg); }
+    50% { transform: translate(2px, -2px) rotate(2deg); }
+    75% { transform: translate(-2px, -2px) rotate(-2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* The Box Body */
+.gift-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80%;
+    background: var(--box-color);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 40px rgba(255, 51, 102, 0.4);
+}
+
+/* The Box Lid */
+.gift-lid {
+    position: absolute;
+    top: 0;
+    left: -5%;
+    width: 110%;
+    height: 25%;
+    background: #ff5c8d; /* Slightly lighter pink */
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+/* Ribbons (Vertical) */
+.gift-box::before, .gift-lid::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 100%;
+    background: var(--ribbon-color);
+}
+
+/* Ribbons (Horizontal on Lid) */
+.gift-lid::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 25px;
+    background: var(--ribbon-color);
+}
+
+/* --- IMPORTANT TEXT INSTRUCTIONS --- */
+.instruction-container {
+    text-align: center;
+    color: white;
+    z-index: 200;
+    margin-top: 20px;
+    transition: opacity 0.5s;
+}
+
+.headphone-notice {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffd700; /* Gold color */
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.click-text {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse { 
+    0% { opacity: 0.6; } 
+    50% { opacity: 1; } 
+    100% { opacity: 0.6; } 
+}
+
+/* --- OPENING ANIMATION CLASSES --- */
+.box-open .gift-lid {
+    animation: pop-lid 1s forwards;
+}
+.box-open .gift-box {
+    animation: fade-box 1s 0.5s forwards;
+}
+.box-open {
+    animation: none !important; /* Stop shaking */
+}
+
+@keyframes pop-lid {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-300px) rotate(20deg); opacity: 1; }
+    100% { transform: translateY(-500px) rotate(45deg); opacity: 0; }
+}
+@keyframes fade-box {
+    to { transform: scale(0.8); opacity: 0; }
+}
+
+/* --- SPRINKLES & WRAPPERS (CONFETTI) --- */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 150;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Animation for confetti unfolding/falling */
+@keyframes burst-fall {
+    0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; top: 50%; left: 50%; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(1) rotate(720deg); opacity: 0.8; top: 50%; left: 50%; }
+}
+
+/* --- SLIDESHOW & CONTENT --- */
+.hidden { display: none; }
+
+#slideshow-screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 50; /* Behind intro initially */
+}
+
+.slideshow-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 10;
+}
+
+.mySlides {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+}
+
+.mySlides img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.6;
+}
+
+.fade { animation-name: fade; animation-duration: 3.5s; }
+@keyframes fade { from {opacity: 0} to {opacity: 0.6} }
+
+#anniversary-message {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    text-align: center;
+    width: 90%;
+    pointer-events: none;
+}
+
+#anniversary-message h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 0 0 40px rgba(123, 31, 162, 0.8);
+    font-family: 'Brush Script MT', cursive, serif;
+    margin: 0;
+}
+
+.star { position: absolute; color: gold; font-size: 2rem; animation: twinkle 2s infinite ease-in-out; opacity: 0.8; }
+.s1 { top: -60px; left: 20%; } .s2 { top: -40px; right: 25%; } .s3 { bottom: -80px; left: 30%; font-size: 2.5rem; }
+.s4 { bottom: -50px; right: 15%; } .s5 { top: 50%; left: -10%; font-size: 1.8rem; } .s6 { top: 30%; right: -5%; }
+@keyframes twinkle { 0%, 100% { opacity: 0.4; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
+
+.enter-btn {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 12px 30px;
+    border-radius: 30px;
+    transition: all 0.3s;
+    z-index: 60; /* Above everything */
+    background: rgba(0,0,0,0.5);
+}
+.enter-btn:hover { background: white; color: var(--primary); }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future</title>
+    <link rel="stylesheet" href="../css/present.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Dancing+Script:wght@700&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="fog"></div>
+
+    <audio id="futureMusic" loop>
+        <source src="../music/Ed Sheeran - Perfect.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container" id="startScreen">
+        <button class="future-btn" onclick="revealFuture()">
+            <span class="icon">🔮</span>
+            The Future of Us
+        </button>
+    </div>
+
+    <div class="container hidden" id="futureMessage">
+        <div class="scrolling-text-container" id="scrollContainer"></div>
+    </div>
+
+    <a href="memory_lane.html" class="back-btn hidden" id="backBtn">&larr; Back to Timeline</a>
+
+    <script src="../js/present.js"></script>
+</body>
+</html>

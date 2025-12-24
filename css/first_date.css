@@ -1,0 +1,178 @@
+/* --- GENERAL SETUP --- */
+body {
+    margin: 0; padding: 0; height: 100vh; width: 100vw;
+    background: #000; overflow: hidden; font-family: 'Courier New', monospace;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.memory-container {
+    position: relative; width: 800px; height: 600px;
+    border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.scene {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    transition: opacity 1s ease-in-out; opacity: 1;
+}
+.scene.hidden { opacity: 0; pointer-events: none; }
+
+/* --- SHARED COUPLE ASSETS (Holding Hands) --- */
+.couple-container, .couple-walking {
+    display: flex; align-items: flex-end; /* Align bottom */
+}
+
+.person { width: 30px; height: 60px; border-radius: 15px 15px 0 0; position: relative; z-index: 2; }
+.person::after { content: ''; position: absolute; top: -20px; left: 5px; width: 20px; height: 20px; border-radius: 50%; }
+
+.boy { background: #2c3e50; } /* Dark suit/shirt */
+.boy::after { background: #f1c40f; } /* Skin */
+.girl { background: #e84393; } /* Pink dress */
+.girl::after { background: #f1c40f; } /* Skin */
+
+/* THE HAND CONNECTOR */
+.holding-hands-connector {
+    width: 20px; height: 8px; background: #f1c40f; /* Skin tone arms */
+    margin-bottom: 25px; /* Height of hands */
+    margin-left: -5px; margin-right: -5px; /* Pull them closer */
+    z-index: 1; /* Behind bodies */
+    border-radius: 5px;
+}
+
+
+/* ====== SCENE 1: LAKE (Romantic Sunset) ====== */
+#scene1 { 
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4, #a18cd1, #302b63); 
+}
+
+.sun {
+    position: absolute; top: 50px; right: 100px; width: 60px; height: 60px;
+    background: #ff7e5f; border-radius: 50%; 
+    box-shadow: 0 0 40px #ff7e5f;
+}
+
+.lake-bg { 
+    position: absolute; bottom: 0; width: 100%; height: 40%; 
+    background: #24243e; 
+    overflow: hidden; 
+}
+
+.water-ripple {
+    position: absolute; width: 200%; height: 100%;
+    background: repeating-linear-gradient(45deg, #24243e, #24243e 20px, #3f2b96 20px, #3f2b96 40px);
+    animation: ripple 10s linear infinite; opacity: 0.6;
+}
+@keyframes ripple { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.grass-bank { 
+    position: absolute; bottom: 35%; width: 100%; height: 15%; 
+    background: #0f2027; 
+    border-top: 5px solid #203a43; 
+}
+#couple1 { position: absolute; bottom: 40%; left: 20%; }
+
+/* Cows */
+.cow-herd { position: absolute; bottom: 42%; right: -150px; display: flex; gap: 20px; transition: transform 4s ease-out; }
+.cow { font-size: 3rem; animation: bounce-cow 1s infinite alternate; }
+.cow.c2 { animation-delay: 0.3s; } .cow.c3 { animation-delay: 0.6s; }
+@keyframes bounce-cow { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+.cow-herd.move-in { transform: translateX(-400px); }
+
+
+/* ====== SCENE 2: ADVENTURE (Starry Night Adventure) ====== */
+#scene2 { 
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); 
+}
+
+.stars-bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px; opacity: 0.3;
+}
+
+.rough-path {
+    position: absolute; top: 50%; left: 0; width: 100%; height: 100px;
+    background: #2d1b0e; transform: translateY(-50%); 
+    border-top: 5px solid #1a1008; border-bottom: 5px solid #1a1008;
+}
+.pithole {
+    position: absolute; background: #000; border-radius: 50%; opacity: 0.6;
+    box-shadow: inset 0 0 10px #000;
+}
+.p1 { width: 60px; height: 30px; top: 20px; left: 30%; }
+.p2 { width: 80px; height: 40px; top: 40px; left: 60%; }
+.p3 { width: 50px; height: 25px; top: 10px; left: 85%; }
+
+#coupleWalking {
+    position: absolute; top: 40%; left: -20%; /* START OFF SCREEN LEFT */
+    /* REMOVED AUTO ANIMATION */
+}
+
+/* This class is added by JS to start the walk */
+.start-walking {
+    animation: walk-path 6s linear forwards;
+}
+
+/* NAVIGATING THE HOLES (Sharper Hops Together) */
+@keyframes walk-path {
+    0% { left: -10%; transform: translateY(0); }
+    
+    /* Hop over Pithole 1 (around 30%) */
+    28% { transform: translateY(0); }
+    30% { transform: translateY(-30px); } 
+    32% { transform: translateY(0); } 
+
+    /* Hop over Pithole 2 (around 60%) */
+    58% { transform: translateY(0); }
+    60% { transform: translateY(-30px); } 
+    62% { transform: translateY(0); } 
+
+    /* Hop over Pithole 3 (around 85%) */
+    83% { transform: translateY(0); }
+    85% { transform: translateY(-20px); } 
+    87% { transform: translateY(0); } 
+
+    100% { left: 110%; transform: translateY(0); }
+}
+
+
+/* ====== SCENE 3: CHARGERS (Intimate Cafe) ====== */
+#scene3 { 
+    background: radial-gradient(circle, #4a192c, #1a0510);
+}
+
+.neon-sign {
+    position: absolute; top: 15%; width: 100%; text-align: center;
+    font-family: 'Arial Black', sans-serif; font-size: 4rem; color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de;
+    animation: neon-flicker 2s infinite alternate;
+}
+@keyframes neon-flicker { 90% { opacity: 1; } 95% { opacity: 0.8; } 100% { opacity: 1; } }
+
+.cafe-table {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 200px; background: #222; 
+    border-radius: 20px 20px 0 0; border-top: 10px solid #333;
+    display: flex; justify-content: center; align-items: flex-end; padding-bottom: 30px;
+    box-shadow: 0 -10px 50px rgba(255, 0, 222, 0.2); 
+}
+
+.drinks-container { display: flex; gap: 50px; opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
+.drinks-container.show { opacity: 1; transform: translateY(0); }
+
+.mojito {
+    width: 60px; height: 100px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 5px 5px 15px 15px; position: relative; overflow: hidden;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+.liquid { position: absolute; bottom: 0; width: 100%; height: 70%; opacity: 0.8; }
+.green { background: linear-gradient(to top, #00b894, #55efc4); box-shadow: 0 0 20px #55efc4; }
+.red { background: linear-gradient(to top, #d63031, #ff7675); box-shadow: 0 0 20px #ff7675; }
+.straw { position: absolute; top: -20px; left: 25px; width: 8px; height: 120px; background: #eee; transform: rotate(15deg); }
+.lemon-slice { position: absolute; top: 35px; right: -5px; width: 20px; height: 10px; background: yellow; border-radius: 0 0 20px 20px; transform: rotate(-30deg); }
+
+.narrative-box {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    width: 90%; background: rgba(0,0,0,0.8); color: #fff; padding: 15px;
+    border-radius: 10px; text-align: center; font-size: 1.1rem; z-index: 10;
+    border: 1px solid rgba(255,255,255,0.2);
+}

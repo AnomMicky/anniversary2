@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beginning</title>
+    <link rel="stylesheet" href="../css/theday.css">
+</head>
+<body>
+
+    <div id="startOverlay">
+        <button id="startBtn">Open Memory ☕</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="../music/Arctic Monkeys - I Wanna Be Yours.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="split-container" id="mainScene">
+        
+        <div class="side left-side">
+            <div class="phone-screen">
+                <div class="contact-header">
+                    <div class="avatar">
+                        <img src="../photos/img-3.jpg" alt="Her Photo">
+                    </div>
+                    <div class="name">My Crush 😍</div>
+                </div>
+                <div class="chat-area" id="chatLeft"></div>
+            </div>
+        </div>
+
+        <div class="side right-side">
+            <div class="phone-screen">
+                <div class="contact-header">
+                    <div class="avatar">
+                        <img src="../photos/pp.jpeg" alt="His Photo">
+                    </div>
+                    <div class="name">Cute Boy 🙈</div>
+                </div>
+                <div class="chat-area" id="chatRight"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="fastForward" class="overlay hidden">
+        <div class="clock">🕒</div>
+        <div class="time-text">3 Hours Later...</div>
+    </div>
+
+    <div id="drumRoll" class="overlay hidden">
+        <div class="drum-text">🥁 DRUM ROLL 🥁</div>
+    </div>
+
+    <a href="memory_lane.html" class="back-btn hidden" id="backBtn">&larr; Back to Timeline</a>
+
+    <script src="../js/theday.js"></script>
+</body>
+</html>

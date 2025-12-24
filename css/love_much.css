@@ -1,0 +1,128 @@
+body {
+    margin: 0; padding: 0; height: 100vh;
+    background: linear-gradient(135deg, #fff0f3 0%, #ffe4e6 100%);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    overflow: hidden; 
+    font-family: 'Fredoka One', cursive;
+}
+
+/* --- THE STAGE --- */
+.container {
+    position: relative; text-align: center; width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+
+/* --- DIALOGUE BOX --- */
+.dialogue-box {
+    background: white; padding: 20px 40px; border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.2);
+    font-family: 'Pacifico', cursive; font-size: 1.8rem; color: #ff6b6b;
+    margin-bottom: 50px; min-height: 80px;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 1; transition: all 0.5s ease; max-width: 80%; z-index: 10;
+    position: relative;
+}
+.dialogue-box::after {
+    content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+    border-width: 10px 10px 0; border-style: solid; border-color: white transparent;
+}
+
+/* --- THE GUY --- */
+.character { position: relative; z-index: 5; }
+
+.head {
+    width: 80px; height: 80px; background-color: #ffccaa; border-radius: 50%;
+    margin: 0 auto; position: relative; z-index: 6;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.eyes {
+    display: flex; justify-content: space-between; width: 40px;
+    position: absolute; top: 35px; left: 20px;
+}
+.eye {
+    width: 8px; height: 8px; background: #333; border-radius: 50%;
+    animation: blink 4s infinite;
+}
+.mouth {
+    width: 20px; height: 10px; border-bottom: 3px solid #333;
+    border-radius: 0 0 20px 20px; position: absolute; bottom: 20px; left: 30px;
+}
+.cheek {
+    width: 12px; height: 8px; background: #ff9999; border-radius: 50%; opacity: 0.6;
+    position: absolute; top: 42px;
+}
+.cheek.left { left: 10px; } .cheek.right { right: 10px; }
+
+.body {
+    width: 100px; height: 140px; background-color: #ff6b6b;
+    border-radius: 20px 20px 0 0; margin: -10px auto 0;
+    position: relative; z-index: 5;
+    display: flex; justify-content: center; align-items: center;
+    color: white; font-size: 1.2rem; text-align: center;
+    line-height: 1.2; padding: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.shirt-text { font-family: 'Fredoka One', cursive; opacity: 0.9; }
+
+/* --- THE GROWING ARMS --- */
+.arm-container {
+    position: absolute; top: 100px; width: 100%;
+    display: flex; justify-content: center; pointer-events: none;
+}
+
+.arm {
+    height: 25px; background-color: #ff6b6b; position: absolute; top: 0;
+    width: 30px; /* Start small */
+    z-index: 4; border-radius: 10px;
+}
+
+.arm-left {
+    right: 50%; margin-right: 45px; transform-origin: right center;
+    border-radius: 10px 0 0 10px;
+}
+
+.arm-right {
+    left: 50%; margin-left: 45px; transform-origin: left center;
+    border-radius: 0 10px 10px 0;
+}
+
+.hand {
+    width: 30px; height: 30px; background-color: #ffccaa; border-radius: 50%;
+    position: absolute; top: -2.5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.arm-left .hand { left: -15px; } .arm-right .hand { right: -15px; }
+
+/* --- BUTTONS --- */
+.start-btn {
+    position: absolute; bottom: 50px; padding: 15px 40px;
+    background: #ff6b6b; color: white; border: none; border-radius: 50px;
+    font-family: 'Fredoka One', cursive; font-size: 1.5rem; cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    transition: transform 0.2s, opacity 0.5s; z-index: 20;
+}
+.start-btn:hover { transform: scale(1.05); }
+
+.back-btn {
+    position: absolute; bottom: 50px; text-decoration: none; color: #ff6b6b;
+    border: 2px solid #ff6b6b; padding: 10px 20px; border-radius: 20px;
+    font-family: 'Fredoka One', cursive; transition: 0.3s;
+}
+.back-btn:hover { background: #ff6b6b; color: white; }
+
+.hidden { opacity: 0; pointer-events: none; }
+
+@keyframes blink { 0%, 90%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+
+/* Heart Background Effect */
+.bg-heart {
+    position: absolute; color: rgba(255, 107, 107, 0.3); font-size: 2rem;
+    animation: float 6s linear infinite; z-index: 0;
+}
+@keyframes float {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}

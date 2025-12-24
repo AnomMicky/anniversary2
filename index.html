@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="confetti-container"></div>
+
+    <div id="intro-screen">
+        <div id="gift-container">
+            <div class="gift-lid"></div>
+            <div class="gift-box"></div>
+        </div>
+
+        <div class="instruction-container">
+            <div class="headphone-notice">
+                <span>🎧</span> USE HEADPHONES <span>🎧</span>
+            </div>
+            <div class="click-text">
+                Tap the box to open your surprise...
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="slideshow-screen" class="hidden">
+        
+        <div id="anniversary-message">
+            <div class="star s1">✨</div>
+            <div class="star s2">✦</div>
+            <div class="star s3">✨</div>
+            <div class="star s4">✦</div>
+            <div class="star s5">✨</div>
+            <div class="star s6">✦</div>
+            <h1>Happy 2nd Anniversary, My Love! ❤️</h1>
+        </div>
+
+        <div class="slideshow-container" id="slideshow-container"></div>
+
+        <a href="html/memory_lane.html" class="enter-btn">See Our Journey &rarr;</a>
+    
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <link rel="stylesheet" href="../css/surprise.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <audio id="mooSound">
+        <source src="../music/Cow Moo Sound Effect.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="stage">
+        
+        <div class="curtain left" id="curtainLeft"></div>
+        <div class="curtain right" id="curtainRight"></div>
+        
+        <div class="scene-content">
+            
+            <div class="sky">
+                <div class="sun"></div>
+                <div class="cloud c1">☁️</div>
+                <div class="cloud c2">☁️</div>
+                
+                <div class="sky-text-container">
+                    <h1 id="mainText" class="sky-msg">All these flowers are for u my gorgeous princess 🌹</h1>
+                    <h2 id="cowText" class="sky-msg sub hidden">A lil of the flowers for them... 😂</h2>
+                </div>
+            </div>
+
+            <div class="garden" id="garden"></div>
+
+            <div class="cow-invasion hidden" id="cows">
+                <div class="moo-bubble hidden">MOOOOO!!! 🗣️</div>
+                <div class="cow cow1">🐄</div>
+                <div class="cow cow2">🐄</div>
+                <div class="cow cow3">🐄</div>
+            </div>
+
+        </div>
+
+        <button class="play-btn" onclick="startPlay()">Open Curtain 🎭</button>
+
+        <a href="memory_lane.html" class="back-btn hidden" id="backBtn">&larr; Back to Timeline</a>
+
+    </div>
+
+    <script src="../js/surprise.js"></script>
+</body>
+</html>

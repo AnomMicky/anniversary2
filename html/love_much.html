@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <link rel="stylesheet" href="../css/love_much.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Pacifico&display=swap');
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="../music/Christina Perri - A Thousand Years.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="hearts-container"></div>
+
+    <div class="container">
+        
+        <div class="dialogue-box" id="dialogue">
+            Ready to see how much I love you?
+        </div>
+
+        <div class="character">
+            <div class="head">
+                <div class="eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+                <div class="mouth"></div>
+                <div class="cheek left"></div>
+                <div class="cheek right"></div>
+            </div>
+            
+            <div class="arm-container">
+                <div class="arm arm-left" id="armLeft"><div class="hand"></div></div>
+                <div class="arm arm-right" id="armRight"><div class="hand"></div></div>
+            </div>
+
+            <div class="body">
+                <div class="shirt-text">
+                    I<br>Love<br>You
+                </div>
+            </div>
+        </div>
+
+        <button class="start-btn" onclick="startShow()">Click Me ❤️</button>
+        
+        <a href="memory_lane.html" class="back-btn hidden" id="backBtn">&larr; Back</a>
+    </div>
+
+    <script src="../js/love_much.js"></script>
+</body>
+</html>
